@@ -4,39 +4,23 @@ from pydantic import BaseModel
 from course_app.db.models import StatusChoices, StatusLevelChoices, StatusCertificateChoices
 
 
-<<<<<<< HEAD
-class UserProfileSchema(BaseModel):
-=======
 class StudentSchema(BaseModel):
->>>>>>> 1bfeb8a (added favorite)
     id: int
     first_name: str
     last_name: str
     username: str
-<<<<<<< HEAD
     password: str
-=======
     hash_password: str
->>>>>>> 1bfeb8a (added favorite)
     phone_number: Optional[str]
     age: Optional[int]
     profile_image: Optional[str]
     date_registered: datetime
-<<<<<<< HEAD
-
-
-class StudentSchema(UserProfileSchema):
     status: StatusChoices = StatusChoices.student
     assignment_students: List[int]
     answer_students: List[int]
     student_certificate: List[int]
     review_course_student: List[int]
     student_review_student: List[int]
-
-
-class TeacherSchema(UserProfileSchema):
-=======
-    status: StatusChoices = StatusChoices.student
 
 
 
@@ -50,17 +34,13 @@ class TeacherSchema(BaseModel):
     age: Optional[int]
     profile_image: Optional[str]
     date_registered: datetime
->>>>>>> 1bfeb8a (added favorite)
     status: StatusChoices = StatusChoices.teacher
     experience: int
     about_teacher: str
     specialization: str
-<<<<<<< HEAD
     about_social: List[int]
     created_by_teacher: List[int]
     teacher_review_teacher: List[int]
-=======
->>>>>>> 1bfeb8a (added favorite)
 
 
 class AboutSchema(BaseModel):
@@ -87,17 +67,14 @@ class CourseSchema(BaseModel):
     updated_at: datetime
     certificate_course: StatusCertificateChoices
     discount: Optional[int]
-<<<<<<< HEAD
-    course_lesson: List[int]
-    course_assignment: List[int]
-    exam_course: List[int]
-    course_certificate: List[int]
-    review_course: List[int]
-=======
+    # course_lesson: List[int]
+    # course_assignment: List[int]
+    # exam_course: List[int]
+    # course_certificate: List[int]
+    # review_course: List[int]
 
     class Config:
-        orm_mode = True
->>>>>>> 1bfeb8a (added favorite)
+        from_attributes = True
 
 
 class LessonSchema(BaseModel):
@@ -171,8 +148,6 @@ class TeacherReviewSchema(BaseModel):
     id: int
     teacher_review_id: int
     student_review_id: int
-<<<<<<< HEAD
-=======
 
 
 class CartItemSchema(BaseModel):
@@ -204,7 +179,7 @@ class FavoriteSchema(BaseModel):
     items: List[FavoriteItemSchema] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class FavoriteItemCreateSchema(BaseModel):
@@ -213,4 +188,3 @@ class FavoriteItemCreateSchema(BaseModel):
 
 
 
->>>>>>> 1bfeb8a (added favorite)
